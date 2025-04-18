@@ -3,13 +3,41 @@
 ## User Information
 Please fill in your information after forking this repository:
 
-- **Name**: [Your Name]
+- **Name**: Göktuğ Gezer
 
 ## Project Description
 [Add a brief description of your project here]
 
 ## Getting Started
-[Add instructions for setting up and running the project]
+
+1.**Download the repository**
+
+```
+git clone https://github.com/GezerGoktug/JotformFrontendHackathon-20.04.2025.git
+```
+
+2.**Enter the project directory**
+
+```
+cd JotformFrontendHackathon-20.04.2025
+```
+
+3.**Install Required Dependencies**
+
+```
+npm install
+```
+
+4.**Start the application**
+
+```
+npm run dev
+```
+
+5.**Show in browser**
+
+Go to `http://localhost:3000` in your browser.
+
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
