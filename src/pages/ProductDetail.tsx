@@ -4,6 +4,10 @@ import { useParams } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { addCart } from "@/store/cart/actions";
+import { addFavorite, removeFavorite } from "@/store/favProducts/actions";
+import { Heart, X } from "lucide-react";
+import { useIsFavorite } from "@/store/favProducts/hooks";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -11,6 +15,7 @@ const ProductDetail = () => {
 
   const selectedProduct = products.find((item) => item.id === id);
 
+  const isFavorite = useIsFavorite(id as string);
   if (!selectedProduct) {
     return (
       <div className="text-center text-muted-foreground mt-10">
@@ -42,8 +47,26 @@ const ProductDetail = () => {
             </p>
           </div>
           <div className="flex gap-4 mt-6">
-            <Button variant="default">Sepete Ekle</Button>
-            <Button variant="outline">Favorilere Ekle</Button>
+            <Button onClick={() => addCart(selectedProduct)} variant="default">
+              Sepete Ekle
+            </Button>
+            {isFavorite ? (
+              <Button
+                onClick={() => removeFavorite(selectedProduct.id)}
+                className="my-auto"
+                variant="destructive"
+              >
+                <X />
+              </Button>
+            ) : (
+              <Button
+                onClick={() => addFavorite(selectedProduct)}
+                className="my-auto"
+                variant="destructive"
+              >
+                <Heart />
+              </Button>
+            )}
           </div>
         </CardContent>
       </Card>
