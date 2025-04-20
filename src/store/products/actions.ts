@@ -1,8 +1,7 @@
 import api from "@/utils/api";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { IProduct, RawProduct } from "@/types/types";
-
-const FORM_ID = "251073677545968";
+import { FORM_ID } from "@/constants/constant";
 
 export const getProducts = createAsyncThunk<IProduct[]>(
   "products/get",

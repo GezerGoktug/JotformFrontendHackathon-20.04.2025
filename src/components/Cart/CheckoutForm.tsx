@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import toast from "react-hot-toast";
 import api from "@/utils/api";
-// import { useCart } from "@/store/cart/hooks";
-
-const FORM_ID = "251073677545968";
+import { useCart } from "@/store/cart/hooks";
+import { clearCart } from "@/store/cart/actions";
+import { FORM_ID, QUESTION_ID } from "@/constants/constant";
 
 const formSchema = z.object({
   fullname: z.string().min(3, "Fullname must be at least 3 characters."),
@@ -28,22 +28,37 @@ const CheckoutForm = () => {
     resolver: zodResolver(formSchema),
   });
 
-  //   const cart = useCart();
+  const cart = useCart();
 
   const onSubmit = async (data: FormData) => {
     try {
-      const response = await api.put(
-        `https://api.jotform.com/form/${FORM_ID}/submissions`,
-        null,
+      const cartItemsString = JSON.stringify(cart);
+
+      const formData = new URLSearchParams();
+
+      formData.append(`submission[${QUESTION_ID}]`, data.fullname);
+
+      formData.append(`submission[${QUESTION_ID}]`, data.address);
+
+      formData.append(`submission[${QUESTION_ID}]`, cartItemsString);
+
+      const response = await api.post(
+        `/form/${FORM_ID}/submissions`,
+        formData.toString(),
         {
-          params: {},
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
         }
       );
 
-      if (!response.ok) throw new Error("Submission failed");
+      if (response.status !== 200) throw new Error("Submission failed");
+
+      console.log("JotForm response:", response.data);
 
       toast.success("Checkout completed successfully!");
       reset();
+      clearCart();
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
       console.error(error);
