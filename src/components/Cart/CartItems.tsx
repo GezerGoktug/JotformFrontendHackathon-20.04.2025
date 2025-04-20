@@ -5,6 +5,7 @@ import CartItem from "./CartItem";
 
 const CartItems = () => {
   const cart = useCart();
+  
   return (
     <ScrollArea className="h-[500px] w-full pr-2">
       {cart.map((item) => (

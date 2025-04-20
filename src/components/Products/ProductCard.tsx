@@ -1,12 +1,16 @@
-import { CirclePlus, Minus, Plus } from "lucide-react";
+import { CirclePlus, Heart, Minus, Plus, X } from "lucide-react";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardFooter } from "../ui/card";
 import { useState } from "react";
 import { addCart } from "@/store/cart/actions";
 import { IProduct } from "@/types/types";
+import { useIsFavorite } from "@/store/favProducts/hooks";
+import { addFavorite, removeFavorite } from "@/store/favProducts/actions";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
   const [quantity, setQuantity] = useState(1);
+
+  const isFavorite = useIsFavorite(product.id);
 
   return (
     <Card>
@@ -53,19 +57,38 @@ const ProductCard = ({ product }: { product: IProduct }) => {
               </Button>
             </div>
           </div>
-          <Button
-            onClick={() =>
-              addCart({
-                ...product,
-                quantity,
-              })
-            }
-            className="mt-6 ms-auto"
-            variant="success"
-          >
-            <CirclePlus />
-            Add to cart
-          </Button>
+          <div className="flex-between w-full mt-6">
+            {isFavorite ? (
+              <Button
+                onClick={() => removeFavorite(product.id)}
+                className="my-auto"
+                variant="destructive"
+              >
+                <X />
+              </Button>
+            ) : (
+              <Button
+                onClick={() => addFavorite(product)}
+                className="my-auto"
+                variant="destructive"
+              >
+                <Heart />
+              </Button>
+            )}
+            <Button
+              onClick={() =>
+                addCart({
+                  ...product,
+                  quantity,
+                })
+              }
+              className=" ms-auto"
+              variant="success"
+            >
+              <CirclePlus />
+              Add to cart
+            </Button>
+          </div>
         </div>
       </CardFooter>
     </Card>

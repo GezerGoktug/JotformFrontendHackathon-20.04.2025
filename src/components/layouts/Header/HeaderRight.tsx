@@ -17,7 +17,7 @@ const items = [
   },
   {
     label: "Favourites",
-    href: "/fav",
+    href: "/favProducts",
     icon: Heart,
   },
 ];
