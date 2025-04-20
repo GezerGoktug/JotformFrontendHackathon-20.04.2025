@@ -8,7 +8,41 @@ Please fill in your information after forking this repository:
 
 ## Project Description
 
-[Add a brief description of your project here]
+# 🛒 E-Ticaret Projesi
+
+Bu proje, modern web teknolojileri kullanılarak geliştirilmiş kapsamlı ve kullanıcı dostu bir e-ticaret uygulamasıdır. React ve Redux altyapısı ile inşa edilen bu platform, kullanıcıların ürünleri keşfetmesine, favorilerine eklemesine ve alışveriş süreçlerini kolaylıkla tamamlamasına olanak tanır.
+
+## 📌 Proje Açıklaması
+
+Bu uygulama; ürün inceleme, sepet yönetimi, favori ürün listesi oluşturma ve JotForm API entegrasyonu ile sipariş tamamlama gibi birçok özelliği içerisinde barındırmaktadır.
+
+## 🚀 Özellikler
+
+- **🛍️ Ürün Kataloğu:**
+  - Ürünleri listeleyebilir, filtreleyebilir ve arama yapabilirsiniz.
+- **🧺 Alışveriş Sepeti:**
+  - Ürünleri sepete ekleyebilir, adetlerini değiştirebilir ve sepetten çıkarabilirsiniz.
+- **❤️ Favori Ürünler:**
+
+  - Beğendiğiniz ürünleri favorilere ekleyip daha sonra tekrar görüntüleyebilirsiniz.
+
+- **📦 Sipariş Tamamlama:**
+
+  - JotForm API entegrasyonu sayesinde güvenli ve hızlı sipariş tamamlama süreci.
+
+- **💾 Yerel Depolama (LocalStorage):**
+  - Sepet ve favori ürünler tarayıcı hafızasında saklanır, böylece sayfa yenilemelerinde veriler korunur.
+
+## 🛠️ Kullanılan Teknolojiler
+
+| Teknoloji                         | Açıklama                              |
+| --------------------------------- | ------------------------------------- |
+| **React & TypeScript**            | Modern ve hızlı bir frontend mimarisi |
+| **Redux Toolkit**                 | Uygulama genelinde state yönetimi     |
+| **React Hook Form + Zod**         | Form yönetimi ve güçlü doğrulama      |
+| **Axios**                         | API istekleri (JotForm entegrasyonu)  |
+| **React Hot Toast**               | Kullanıcı dostu bildirimler           |
+| **Tailwind CSS / UI Bileşenleri** | Responsive ve modern tasarım          |
 
 ## Getting Started
 
