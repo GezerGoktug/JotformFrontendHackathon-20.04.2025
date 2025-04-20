@@ -1,10 +1,25 @@
-import { Button } from "./components/ui/button";
+import { Toaster } from "react-hot-toast";
+import { Route, Routes } from "react-router-dom";
+import MainLayout from "./layout/MainLayout";
+import Error from "./pages/Error";
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
     <>
-      <div className="text-3xl">Hello world</div>
-      <Button variant="success">Click</Button>
+      <Toaster position="top-right" reverseOrder={false} />
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          {/* <Route path="/product/:id" element={<ProductDetail />} /> */}
+          {/* <Route path="/place-order" element={<PlaceOrder />} /> */}
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/*" element={<Error />} />
+        </Route>
+      </Routes>
     </>
   );
 }

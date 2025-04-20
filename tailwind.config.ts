@@ -6,6 +6,9 @@ const config = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        playfair: ["Playfair Display", "serif"],
+      },
       screens: {
         xs: "400px",
         xls: "550px",

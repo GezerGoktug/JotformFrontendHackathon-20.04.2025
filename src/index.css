@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -70,10 +71,70 @@
 }
 
 @layer base {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+  }
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /*? FLEX-BOX HELPER UTİLİTY CLASSES  */
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .flex-start {
+    @apply flex justify-start items-center;
+  }
+  .flex-end {
+    @apply flex justify-end items-center;
+  }
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+  .flex-around {
+    @apply flex justify-around items-center;
+  }
+  .col-center {
+    @apply flex  flex-col items-center;
+  }
+  .col-start {
+    @apply flex  flex-col items-start;
+  }
+  .col-end {
+    @apply flex  flex-col items-end;
+  }
+  .row-center {
+    @apply flex  flex-row items-center;
+  }
+  /*? POSİTİON HELPER UTİLİTY CLASSES  */
+  .position-top {
+    @apply top-0 left-0 right-0;
+  }
+  .position-bottom {
+    @apply bottom-0 left-0 right-0;
+  }
+  /*? TEXT GRADİENT HELPER UTİLİTY CLASSES  */
+  .text-gradient-b {
+    @apply bg-gradient-to-b text-transparent bg-clip-text;
+  }
+  .text-gradient-r {
+    @apply bg-gradient-to-r text-transparent bg-clip-text;
+  }
+  .text-gradient-br {
+    @apply bg-gradient-to-br text-transparent bg-clip-text;
+  }
+}
+
+@layer components {
+  .bg-skew {
+    @apply relative before:block before:absolute before:-inset-1 before:-skew-y-2 before:-z-10;
   }
 }
