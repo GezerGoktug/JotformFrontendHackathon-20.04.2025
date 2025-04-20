@@ -6,6 +6,7 @@ import { addCart } from "@/store/cart/actions";
 import { IProduct } from "@/types/types";
 import { useIsFavorite } from "@/store/favProducts/hooks";
 import { addFavorite, removeFavorite } from "@/store/favProducts/actions";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
   const [quantity, setQuantity] = useState(1);
@@ -15,11 +16,13 @@ const ProductCard = ({ product }: { product: IProduct }) => {
   return (
     <Card>
       <CardContent>
-        <img
-          src={product.img}
-          className="h-48 mx-auto object-contain my-6"
-          alt={product.name}
-        />
+        <Link to={"/product/" + product.id}>
+          <img
+            src={product.img}
+            className="h-48 mx-auto object-contain my-6"
+            alt={product.name}
+          />
+        </Link>
 
         <div>
           <h6 className="font-semibold text-xl">{product.name}</h6>
